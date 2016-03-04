@@ -41,7 +41,6 @@ import static android.support.test.espresso.Espresso.*;
 import static android.support.test.espresso.action.ViewActions.click;
 import static android.support.test.espresso.matcher.ViewMatchers.withId;
 
-@RunWith(AndroidJUnit4.class)
 public class ExampleEspressoUiTest extends ActivityInstrumentationTestCase2<MainMenuActivity> {
 
 	private MainMenuActivity mActivity;
@@ -60,7 +59,9 @@ public class ExampleEspressoUiTest extends ActivityInstrumentationTestCase2<Main
 	}
 
 	@Override
-	protected void tearDown() {
+	protected void tearDown() throws Exception {
+		super.tearDown();
+
 		// called after each test
 
 		// flow of 2 tests:
@@ -73,13 +74,12 @@ public class ExampleEspressoUiTest extends ActivityInstrumentationTestCase2<Main
 		// tearDown...
 	}
 
-	@Test
 	public void testSimpleExampleTest() {
 
 		// testMethods must start with "testXXXX" where XXXX is the last part of the function name
 		// every test must have the "@Test" annotation
 		UiTestUtils.createEmptyProject();
-		//onView(withId(R.id.bottom_bar)).perform(click());
+		onView(withId(R.id.main_menu_button_new)).perform(click());
 	}
 
 }
