@@ -182,7 +182,6 @@ android {
         applicationId 'org.catrobat.catroid'
         testApplicationId 'org.catrobat.catroid.test'
         testInstrumentationRunner 'pl.polidea.instrumentation.PolideaInstrumentationTestRunner'
-        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
 
         if (System.properties['testPackage']){
 
