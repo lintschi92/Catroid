@@ -115,12 +115,12 @@ dependencies {
     pmd 'net.sourceforge.pmd:pmd:5.1.1'
     checkstyle 'com.puppycrawl.tools:checkstyle:6.7'
 
-    // App's dependencies, including test
-    compile 'com.android.support:support-annotations:23.1.0'
-    androidTestCompile 'com.android.support:support-annotations:23.1.0'
-
-    androidTestCompile 'com.android.support.test.espresso:espresso-core:2.2.1'
-    androidTestCompile 'com.android.support.test:runner:0.4.1'
+    androidTestCompile ('com.android.support.test.espresso:espresso-core:2.2.1') {
+        exclude module: 'support-annotations' // causes conflict
+    }
+    androidTestCompile ('com.android.support.test:runner:0.4.1') {
+        exclude module: 'support-annotations' // causes conflict
+    }
 }
 
 task copyAndroidNatives() {
@@ -180,14 +180,14 @@ android {
         minSdkVersion 16
         targetSdkVersion 22
         applicationId 'org.catrobat.catroid'
-        testApplicationId "org.catrobat.catroid.test"
+        testApplicationId 'org.catrobat.catroid.test'
         testInstrumentationRunner 'pl.polidea.instrumentation.PolideaInstrumentationTestRunner'
-        
+
         if (System.properties['testPackage']){
 
             // parse parameter to determine if espresso test runner is needed
             String testPackage = System.properties['testPackage'].toString()
-            String[] testPackageParts = testPackage.split("[.]")
+            String[] testPackageParts = testPackage.split('[.]')
 
             if (testPackageParts && testPackageParts.size() > 3 && testPackageParts[3] == "uitestespresso") {
                 println "Using espresso Testrunner:"
