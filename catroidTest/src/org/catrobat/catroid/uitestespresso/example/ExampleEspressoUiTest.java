@@ -68,7 +68,6 @@ public class ExampleEspressoUiTest extends ActivityInstrumentationTestCase2<Main
 	public void testSimpleExampleTestPass() {
 
 		// testMethods must start with "testXXXX" where XXXX is the last part of the function name
-		// every test must have the "@Test" annotation
 		UiTestUtils.createEmptyProject();
 		onView(withId(R.id.main_menu_button_new)).perform(click());
 	}
@@ -76,7 +75,6 @@ public class ExampleEspressoUiTest extends ActivityInstrumentationTestCase2<Main
 	public void testSimpleExampleTestFail() {
 
 		// testMethods must start with "testXXXX" where XXXX is the last part of the function name
-		// every test must have the "@Test" annotation
 		UiTestUtils.createEmptyProject();
 		onView(withId(R.id.brick_add_item_to_userlist_edit_text)).perform(click());
 	}
